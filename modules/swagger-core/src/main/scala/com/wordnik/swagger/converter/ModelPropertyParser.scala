@@ -214,7 +214,8 @@ class ModelPropertyParser(cls: Class[_], t: Map[String, String] = Map.empty) (im
       if (!"void".equals(paramType) && null != paramType && !processedFields.contains(name)) {
         if(!excludedFieldTypes.contains(paramType)) {
           val items = {
-            val ComplexTypeMatcher = "([a-zA-Z]*)\\[([a-zA-Z\\.\\-0-9_]*)\\].*".r
+            // will match PceTpe , Array[PceTpe] , Array[com.ciena.bpnetworkcorelib.interfaces.PceTpeFreModelV1$PceTpe] etc
+            val ComplexTypeMatcher = "([a-zA-Z]*)\\[([\\w]+[\\.\\w]*[\\.\\w\\$\\w]*)\\].*".r
             val nameToUse = {
               if(overrideDataType != null) 
                 overrideDataType

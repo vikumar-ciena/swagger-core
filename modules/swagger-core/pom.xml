@@ -10,7 +10,7 @@
   <artifactId>swagger-core_2.11</artifactId>
   <packaging>bundle</packaging>
   <name>swagger-core</name>
-  <version>1.3.13-ciena-bp-0.0.1</version>
+  <version>1.3.13-CIENA-0.0.1</version>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <defaultGoal>install</defaultGoal>
@@ -29,6 +29,11 @@
     </testResources>
 
     <plugins>
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-deploy-plugin</artifactId>
+       <version>2.8.2</version>
+      </plugin>
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
@@ -139,4 +144,11 @@
      <scope>provided</scope>
     </dependency>
   </dependencies>
+    <distributionManagement>
+      <repository>
+	<id>thirdparty-releases</id>
+        <name>BP Thirdparty releases</name>
+         <url>https://artifactory.ciena.com/blueplanet-m2-thirdparty-local</url>
+      </repository>
+    </distributionManagement>
 </project>
